@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DatabaseAccessLayer
 {
-    class DALUserCredentials
+    public class DALUserCredentials
     {
         string connectionString = "Data Source=WIN-JIKA3OO75OT\\SQLEXPRESS;Initial Catalog=CareerSolutions;Integrated Security=True";
 
@@ -57,7 +57,7 @@ namespace DatabaseAccessLayer
             return e;
         }
 
-        public void AddEmployer(BALUserRegister emp)
+        public void AddUser(BALUserRegister emp)
         {
             SqlConnection cn = new SqlConnection(connectionString);
             SqlCommand cmd = new SqlCommand("[dbo].[AddUser]", cn);
@@ -80,7 +80,7 @@ namespace DatabaseAccessLayer
         }
 
 
-        public void UpdateEmployer(BALUserRegister c)
+        public void UpdateUser(BALUserRegister c)
         {
             SqlConnection cn = new SqlConnection(connectionString);
             SqlCommand cmd = new SqlCommand("UpdateUser", cn);
@@ -95,7 +95,7 @@ namespace DatabaseAccessLayer
             cn.Dispose();
         }
 
-        public void DeleteEmployer(int id)
+        public void DeleteUser(int id)
         {
 
             SqlConnection cn = new SqlConnection(connectionString);
