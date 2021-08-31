@@ -1,26 +1,102 @@
-﻿
+﻿@model IEnumerable<CareerSolutionsPortal.Models.JobModel>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_CustomLayout.cshtml";
 }
 
-edit profile
-add job
-jobs created
-
-
-<div class="col-10 container" style="margin:120px">
-    <div style="margin:200px">
-        <button class="btn btn-outline-primary" type="submit">
-            @Html.ActionLink("Edit Profile", "EditProfile")
-        </button>
-
-        <button class="btn btn-outline-primary text-white" type="submit">
-            @Html.ActionLink("Add New Jobs", "AddNewJob")
-        </button>
-    </div> 
-
+<h2>Index</h2>
+<div class="container">
     <div>
+    <div class="col-10 " style="margin:120px">
+        <div style="margin:200px; margin-bottom:100px" class="p-5">
 
+            <button class="btn btn-outline-primary" type="submit">
+                @Html.ActionLink("View Profile", "Details", new { id = Convert.ToInt32(Session["LoggedInUser"]) })
+            </button>
+            <button class="btn btn-outline-primary" type="submit">
+                @Html.ActionLink("Edit Profile", "Edit", new { id = Convert.ToInt32(Session["LoggedInUser"]) })
+            </button>
+
+            <button class="btn btn-outline-primary text-white" type="submit">
+                @Html.ActionLink("Add New Jobs", "CreateJob")
+            </button>
+        </div>
+        </div>
+
+
+        <div>
+
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.JobId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmployeeId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CompanyName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.JobProfile)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Location)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Salary)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.JobPostedDate)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JobId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CompanyName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JobProfile)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Location)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Salary)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JobPostedDate)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.JobId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.JobId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.JobId })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
     </div>
 </div>
+
+

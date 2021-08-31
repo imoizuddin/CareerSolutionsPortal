@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BALEmployerLogin.cs" />
     <Compile Include="Job\BALJobApplication.cs" />
     <Compile Include="Job\BALJobModel.cs" />
     <Compile Include="Login\BALEmployerLogin.cs" />

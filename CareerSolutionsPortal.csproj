@@ -271,6 +271,13 @@
     <Content Include="Views\AddUser\Details.cshtml" />
     <Content Include="Views\AddUser\Edit.cshtml" />
     <Content Include="Views\Job\Index.cshtml" />
+    <Content Include="Views\Job\Details.cshtml" />
+    <Content Include="Views\Job\Create.cshtml" />
+    <Content Include="Views\Job\Edit.cshtml" />
+    <Content Include="Views\Job\Delete.cshtml" />
+    <Content Include="Views\EmployerHome\CreateJob.cshtml" />
+    <Content Include="Views\EmployerHome\Details.cshtml" />
+    <Content Include="Views\EmployerHome\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

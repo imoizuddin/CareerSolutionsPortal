@@ -38,7 +38,17 @@ namespace CareerSolutionsPortal.Controllers
         // GET: Job/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            BALJobModel data = dal.FindJobDetails(id);
+            JobModel c = new JobModel();
+            c.JobId = Convert.ToInt32(data.JobId);
+            c.EmployeeId = data.EmployeeId;
+            c.CompanyName = data.CompanyName;
+            c.JobProfile = data.JobProfile;
+            c.Description = data.Description;
+            c.Location = data.Location;
+            c.Salary = data.Salary;
+            c.JobPostedDate = data.JobPostedDate;
+            return View(c);
         }
 
         // GET: Job/Create
@@ -49,16 +59,25 @@ namespace CareerSolutionsPortal.Controllers
 
         // POST: Job/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(JobModel job)
         {
             try
             {
-                // TODO: Add insert logic here
+                BALJobModel c = new BALJobModel();
+                c.EmployeeId = job.EmployeeId;
+                c.CompanyName = job.CompanyName;
+                c.JobProfile = job.JobProfile;
+                c.Description = job.Description;
+                c.Location = job.Location;
+                c.Salary = job.Salary;
+                c.JobPostedDate = job.JobPostedDate;
+                dal.AddJob(c);
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
+                ViewBag.error = ex.Message;
                 return View();
             }
         }
@@ -66,16 +85,34 @@ namespace CareerSolutionsPortal.Controllers
         // GET: Job/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            BALJobModel data = dal.FindJobDetails(id);
+            JobModel c = new JobModel();
+            c.EmployeeId = data.EmployeeId;
+            c.CompanyName = data.CompanyName;
+            c.JobProfile = data.JobProfile;
+            c.Description = data.Description;
+            c.Location = data.Location;
+            c.Salary = data.Salary;
+            c.JobPostedDate = data.JobPostedDate;
+            return View(c);
         }
 
         // POST: Job/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, JobModel collection)
         {
             try
             {
-                // TODO: Add update logic here
+                BALJobModel c = new BALJobModel();
+                c.JobId = id;
+                c.EmployeeId = collection.EmployeeId;
+                c.CompanyName = collection.CompanyName;
+                c.JobProfile = collection.JobProfile;
+                c.Description = collection.Description;
+                c.Location = collection.Location;
+                c.Salary = collection.Salary;
+                c.JobPostedDate = collection.JobPostedDate;
+                dal.UpdateJob(c);
 
                 return RedirectToAction("Index");
             }
@@ -88,7 +125,17 @@ namespace CareerSolutionsPortal.Controllers
         // GET: Job/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            BALJobModel data = dal.FindJobDetails(id);
+            JobModel c = new JobModel();
+            c.JobId = id;
+            c.EmployeeId = data.EmployeeId;
+            c.CompanyName = data.CompanyName;
+            c.JobProfile = data.JobProfile;
+            c.Description = data.Description;
+            c.Location = data.Location;
+            c.Salary = data.Salary;
+            c.JobPostedDate = data.JobPostedDate;
+            return View(c);
         }
 
         // POST: Job/Delete/5
@@ -97,8 +144,7 @@ namespace CareerSolutionsPortal.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-
+                dal.DeleteJob(id);
                 return RedirectToAction("Index");
             }
             catch

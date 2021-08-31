@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using BusinessAccessLayer.Register;
+using BusinessAccessLayer;
 using System.Data.SqlClient;
 
 
@@ -58,7 +59,7 @@ namespace DatabaseAccessLayer
             e.EmpId = empid;
             e.FullName = cmd.Parameters["@name"].Value.ToString();
             e.Email = cmd.Parameters["@email"].Value.ToString();
-            e.Phone = Convert.ToInt32( cmd.Parameters["@phone"].Value.ToString());
+            e.Phone = Convert.ToInt32(cmd.Parameters["@phone"].Value.ToString());
             e.CompanyName = cmd.Parameters["@companyName"].Value.ToString();
 
 
@@ -92,6 +93,22 @@ namespace DatabaseAccessLayer
             cn.Dispose();
         }
 
+        public int CheckEmployer(BALEmployerLogin emp)
+        {
+            SqlConnection cn = new SqlConnection(connectionString);
+            SqlCommand cmd = new SqlCommand("SELECT [dbo].[fn_validateEmployee](@p_mailId,@p_pwd)", cn);
+            cmd.Parameters.AddWithValue("@p_mailId", emp.Email);
+            cmd.Parameters.AddWithValue("@p_pwd", emp.Password);
+
+            cn.Open();
+            SqlDataReader dr = cmd.ExecuteReader();
+            dr.Read();
+            int id = Convert.ToInt32(dr[0]);
+
+            cn.Close();
+            cn.Dispose();
+            return id;
+        }
 
         public void UpdateEmployer(BALEmployerRegister c)
         {
