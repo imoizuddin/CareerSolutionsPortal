@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+
+
+<div class="col-10 container" style="margin:120px">
+    <div style="margin:200px">
+            <button class="btn btn-outline-primary" type="submit">
+                @Html.ActionLink("Edit Profile", "EditProfile")
+            </button>
+            
+            <button class="btn btn-outline-primary text-white" type="submit" >
+                @Html.ActionLink("Applied Jobs", "AppliedJobs")
+            </button>
+        
+    </div>
+
+    <form class="d-flex" style="margin:200px">
+        <input class="form-control me-2" type="search" placeholder="Search Jobs" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+
+</div>

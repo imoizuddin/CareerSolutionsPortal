@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+
+edit profile
+add job
+jobs created
+
+
+<div class="col-10 container" style="margin:120px">
+    <div style="margin:200px">
+        <button class="btn btn-outline-primary" type="submit">
+            @Html.ActionLink("Edit Profile", "EditProfile")
+        </button>
+
+        <button class="btn btn-outline-primary text-white" type="submit">
+            @Html.ActionLink("Add New Jobs", "AddNewJob")
+        </button>
+    </div> 
+
+    <div>
+
+    </div>
+</div>
