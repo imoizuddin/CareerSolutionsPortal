@@ -1,0 +1,78 @@
+﻿@model IEnumerable<CareerSolutionsPortal.Models.JobModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_CustomLayout.cshtml";
+}
+
+<div class="col-6 container" style="margin:120px">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <h2>Index</h2>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.JobId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobProfile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobPostedDate)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobProfile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobPostedDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.JobId  }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.JobId }) |
+                    @Html.ActionLink("Delete", "Delete", new {  id=item.JobId  })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

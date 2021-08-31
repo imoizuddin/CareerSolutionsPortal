@@ -3,15 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BusinessAccessLayer;
+using DatabaseAccessLayer;
+using CareerSolutionsPortal.Models;
 
 namespace CareerSolutionsPortal.Controllers
 {
     public class JobController : Controller
     {
+        DALJobDetails dal = new DALJobDetails();
         // GET: Job
         public ActionResult Index()
         {
-            return View();
+            List<BALJobModel> categories = dal.GetJobs();
+            List<JobModel> mlist = new List<JobModel>();
+            foreach (var item in categories)
+            {
+                JobModel c = new JobModel();
+                c.JobId = item.JobId;
+                c.EmployeeId = item.EmployeeId;
+                c.CompanyName = item.CompanyName;
+                c.JobProfile = item.JobProfile;
+                c.Description = item.Description;
+                c.Location = item.Location;
+                c.Salary = item.Salary;
+                c.JobPostedDate = item.JobPostedDate;
+                mlist.Add(c);
+            }
+
+
+            return View(mlist);
         }
 
         // GET: Job/Details/5

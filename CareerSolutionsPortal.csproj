@@ -270,10 +270,10 @@
     <Content Include="Views\AddEmployer\Edit.cshtml" />
     <Content Include="Views\AddUser\Details.cshtml" />
     <Content Include="Views\AddUser\Edit.cshtml" />
+    <Content Include="Views\Job\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Job\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
