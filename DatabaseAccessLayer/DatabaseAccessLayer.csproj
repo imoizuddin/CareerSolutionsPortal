@@ -42,7 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DALEmployerCredentials.cs" />
+    <Compile Include="DALJobApplicationDetails.cs" />
+    <Compile Include="DALJobDetails.cs" />
     <Compile Include="DALUserCredentials.cs" />
+    <Compile Include="DALUserDetails.cs" />
+    <Compile Include="DALUserEducationDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
